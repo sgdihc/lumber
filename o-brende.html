@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumber — О бренде</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-['Inter']">
+
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="главная.html" class="text-2xl font-black cursor-pointer">
+                <span class="text-gray-900">LUM</span><span class="text-red-500">BER</span>
+            </a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="главная.html" class="text-gray-600 hover:text-red-500 transition">Главная</a>
+                <a href="katalog.html" class="text-gray-600 hover:text-red-500 transition">Каталог</a>
+                <a href="o-brende.html" class="text-gray-900 hover:text-red-500 transition font-semibold">О бренде</a>
+            </nav>
+            <div class="flex gap-5">
+                <!-- ИЗБРАННОЕ -->
+                <div class="relative cursor-pointer" onclick="toggleWishlist(0)">
+                    <i class="far fa-heart text-gray-600 hover:text-red-500 transition text-xl"></i>
+                    <span
+                        class="wish-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </div>
+
+                <!-- КОРЗИНА -->
+                <div class="relative cursor-pointer cart-toggle" onclick="toggleCart()">
+                    <i class="fas fa-bag-shopping text-gray-600 hover:text-red-500 transition text-xl"></i>
+                    <span
+                        class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </div>
+
+                <!-- ПРОФИЛЬ (ссылка на страницу авторизации) -->
+                <a href="auth.html" class="text-gray-600 hover:text-red-500 transition text-xl">
+                    <i class="far fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Выпадающая корзина -->
+    <div id="cart-dropdown" class="hidden fixed right-6 top-20 w-96 bg-white rounded-2xl shadow-xl border z-50">
+        <div class="p-4 border-b font-semibold text-lg">🛒 Корзина</div>
+        <div id="cart-items" class="max-h-80 overflow-y-auto p-4 space-y-3"></div>
+        <div class="p-4 border-t bg-gray-50 rounded-b-2xl">
+            <div class="flex justify-between mb-3 text-lg">
+                <span>Итого:</span>
+                <span id="cart-total" class="font-bold text-red-500">0 ₽</span>
+            </div>
+            <button onclick="checkout()"
+                class="w-full bg-gray-900 hover:bg-red-500 text-white py-3 rounded-xl transition text-base font-semibold">
+                Оформить заказ
+            </button>
+            <p class="text-xs text-gray-400 text-center mt-3">Бесплатная доставка от 50 000 ₽</p>
+        </div>
+    </div>
+    <!-- Хлебные крошки -->
+    <div class="bg-gray-100 py-3">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500">
+                <a href="главная.html" class="hover:text-red-500">Главная</a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <span class="text-gray-900">О бренде</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO СЕКЦИЯ -->
+    <section class="relative overflow-hidden bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+        <div class="absolute inset-0 opacity-20">
+            <img src="assets/images/history.jpg" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-24 relative z-10">
+            <div class="max-w-3xl">
+                <span class="text-red-400 text-sm font-semibold tracking-wider uppercase">История бренда</span>
+                <h1 class="text-4xl md:text-5xl font-bold mt-3 mb-5 leading-tight">Создаём мебель,<br>которая живёт с
+                    вами</h1>
+                <p class="text-gray-300 text-lg leading-relaxed">Lumber — это больше, чем просто мебель. Мы создаём
+                    пространство, в котором хочется жить, работать и вдохновляться.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- О КОМПАНИИ -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-red-500 text-sm font-semibold uppercase tracking-wide">Кто мы</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-5">Российский производитель премиальной мебели</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">Основанная в 2015 году, компания Lumber быстро завоевала
+                    доверие благодаря безупречному качеству и вниманию к деталям. Мы объединили традиции ручного
+                    мастерства с современными технологиями.</p>
+                <p class="text-gray-600 mb-6 leading-relaxed">Каждое изделие проходит строгий контроль качества. Мы
+                    используем только экологичные материалы — массив дуба, ясеня, натуральную кожу и премиальные ткани.
+                </p>
+                <div class="flex gap-4">
+                    <div class="flex items-center gap-2"><i class="fas fa-check-circle text-red-500"></i><span
+                            class="text-sm">10 лет опыта</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-check-circle text-red-500"></i><span
+                            class="text-sm">50+ мастеров</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-check-circle text-red-500"></i><span
+                            class="text-sm">100% гарантия</span></div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="assets/images/kto.jpg" class="rounded-2xl shadow-xl w-full h-96 object-cover">
+                <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 max-w-xs">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-trophy text-red-500 text-3xl"></i>
+                        <div>
+                            <p class="font-bold text-lg">Премия «Лучшая мебель»</p>
+                            <p class="text-gray-500 text-sm">2022, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СТАТИСТИКА -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-red-500 text-sm font-semibold uppercase tracking-wide">Цифры</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">Lumber в цифрах</h2>
+                <p class="text-gray-500 mt-2">Нам доверяют тысячи клиентов по всей России</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm transition">
+                    <div class="text-4xl font-bold text-red-500 mb-2">5000+</div>
+                    <p class="text-gray-600 font-medium">довольных клиентов</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm transition">
+                    <div class="text-4xl font-bold text-red-500 mb-2">8 лет</div>
+                    <p class="text-gray-600 font-medium">на рынке</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm transition">
+                    <div class="text-4xl font-bold text-red-500 mb-2">50+</div>
+                    <p class="text-gray-600 font-medium">моделей мебели</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm transition">
+                    <div class="text-4xl font-bold text-red-500 mb-2">24/7</div>
+                    <p class="text-gray-600 font-medium">поддержка</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- НАША КОМАНДА -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <span class="text-red-500 text-sm font-semibold uppercase tracking-wide">Команда</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2">Наши эксперты</h2>
+            <p class="text-gray-500 mt-2">Талантливые дизайнеры и опытные мастера</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md transition">
+                <img src="assets/images/ava5.jpg" class="w-full h-64 object-cover">
+                <div class="p-5 text-center">
+                    <h3 class="font-bold text-xl">Анна Коваленко</h3>
+                    <p class="text-red-500 text-sm mb-2">Главный дизайнер</p>
+                    <p class="text-gray-500 text-sm">Стаж 12 лет. Создала более 200 интерьеров.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md transition">
+                <img src="assets/images/ava1.jpg" class="w-full h-64 object-cover">
+                <div class="p-5 text-center">
+                    <h3 class="font-bold text-xl">Дмитрий Волков</h3>
+                    <p class="text-red-500 text-sm mb-2">Руководитель производства</p>
+                    <p class="text-gray-500 text-sm">Контролирует качество на всех этапах.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md transition">
+                <img src="assets/images/ava2.jpg" class="w-full h-64 object-cover">
+                <div class="p-5 text-center">
+                    <h3 class="font-bold text-xl">Елена Морозова</h3>
+                    <p class="text-red-500 text-sm mb-2">Клиентский сервис</p>
+                    <p class="text-gray-500 text-sm">Поможет подобрать идеальное решение.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МИССИЯ И ЦЕННОСТИ -->
+    <section class="bg-gray-100 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center bg-white rounded-2xl p-8 shadow-sm transition">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Экологичность</h3>
+                    <p class="text-gray-500">Используем только сертифицированные натуральные материалы</p>
+                </div>
+                <div class="text-center bg-white rounded-2xl p-8 shadow-sm transition">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Забота о клиентах</h3>
+                    <p class="text-gray-500">Индивидуальный подход к каждому заказу</p>
+                </div>
+                <div class="text-center bg-white rounded-2xl p-8 shadow-sm transition">
+                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gem text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Качество</h3>
+                    <p class="text-gray-500">Гарантия 5 лет на всю продукцию</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ КЛИЕНТОВ -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <span class="text-red-500 text-sm font-semibold uppercase tracking-wide">Отзывы</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2">Что говорят о нас</h2>
+            <p class="text-gray-500 mt-2">Реальные истории наших клиентов</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Отзыв 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div class="flex gap-1 text-yellow-400 mb-3">★★★★★</div>
+                <p class="text-gray-700 italic mb-4">"Заказала в Lumber комплект мебели для гостиной. Всё приехало точно
+                    в срок, качество отличное. Дизайн — просто восторг! Обязательно буду заказывать ещё."</p>
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/ava3.jpg" alt="Мария Иванова"
+                        class="w-10 h-10 rounded-full object-cover border-2 border-gray-200">
+                    <div>
+                        <p class="font-bold text-gray-800">Мария Иванова</p>
+                        <p class="text-gray-400 text-sm">Москва</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div class="flex gap-1 text-yellow-400 mb-3">★★★★★</div>
+                <p class="text-gray-700 italic mb-4">"Отличный сервис и консультация. Помогли выбрать стол под наш
+                    интерьер. Доставка быстрая, сборка аккуратная. Рекомендую!"</p>
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/ava4.jpg" alt="Алексей Петров"
+                        class="w-10 h-10 rounded-full object-cover border-2 border-gray-200">
+                    <div>
+                        <p class="font-bold text-gray-800">Алексей Петров</p>
+                        <p class="text-gray-400 text-sm">Санкт-Петербург</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-gray-100 py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-red-500 text-sm font-semibold uppercase tracking-wide">Вопросы</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">Часто задаваемые вопросы</h2>
+                <p class="text-gray-500 mt-2">Ответы на самые популярные вопросы о нас</p>
+            </div>
+            <div class="divide-y divide-gray-200 bg-white rounded-2xl overflow-hidden shadow-md">
+                <details class="group p-5">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900 cursor-pointer font-medium">
+                        <span>Как долго изготавливается мебель?</span>
+                        <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </summary>
+                    <p class="pt-4 text-gray-600">Стандартный срок изготовления мебели составляет 14-21 рабочий день в
+                        зависимости от сложности модели и выбранных материалов.</p>
+                </details>
+                <details class="group p-5">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900 cursor-pointer font-medium">
+                        <span>Есть ли гарантия на мебель?</span>
+                        <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </summary>
+                    <p class="pt-4 text-gray-600">Мы предоставляем гарантию 5 лет на всю продукцию. Гарантия
+                        распространяется на все дефекты производства.</p>
+                </details>
+                <details class="group p-5">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900 cursor-pointer font-medium">
+                        <span>Можно ли вернуть товар?</span>
+                        <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </summary>
+                    <p class="pt-4 text-gray-600">Да, вы можете вернуть товар в течение 14 дней с момента получения при
+                        условии сохранения товарного вида и упаковки.</p>
+                </details>
+                <details class="group p-5">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900 cursor-pointer font-medium">
+                        <span>Как работает 3D-конфигуратор?</span>
+                        <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </summary>
+                    <p class="pt-4 text-gray-600">Вы можете выбрать модель мебели, изменить материал, цвет и сразу
+                        увидеть результат в 3D. После настройки добавьте товар в корзину.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+                <span class="text-red-500 text-sm font-semibold uppercase tracking-wide">Контакты</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-5">Свяжитесь с нами</h2>
+                <p class="text-gray-600 mb-8 leading-relaxed">Остались вопросы? Напишите нам, и мы ответим в ближайшее
+                    время. Наши специалисты всегда готовы помочь.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center"><i
+                                class="fas fa-phone text-red-500 text-xl"></i></div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Телефон</p>
+                            <p class="font-semibold text-lg">+7 (800) 555-35-35</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center"><i
+                                class="fas fa-envelope text-red-500 text-xl"></i></div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Email</p>
+                            <p class="font-semibold text-lg">hello@lumber.ru</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center"><i
+                                class="fas fa-map-marker-alt text-red-500 text-xl"></i></div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Адрес</p>
+                            <p class="font-semibold text-lg">г. Москва, ул. Дизайнеров, 15</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="bg-white rounded-2xl p-8 shadow-md border"
+                onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.')">
+                <h3 class="text-2xl font-bold mb-5">Напишите нам</h3>
+                <div class="space-y-4">
+                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Имя</label><input type="text"
+                            class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            placeholder="Ваше имя" required></div>
+                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Email</label><input type="email"
+                            class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            placeholder="Ваш email" required></div>
+                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Сообщение</label><textarea rows="4"
+                            class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            placeholder="Ваше сообщение"></textarea></div>
+                    <button type="submit"
+                        class="w-full bg-gray-900 hover:bg-red-500 text-white font-semibold py-3 rounded-xl transition-all duration-300 text-lg">Отправить
+                        сообщение</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <div class="text-2xl font-black mb-4"><span class="text-white">LUM</span><span
+                            class="text-red-500">BER</span></div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Премиальная мебель для современной жизни. Создайте
+                        интерьер своей мечты вместе с Lumber.</p>
+                    <div class="flex gap-4 mt-5">
+                        <i
+                            class="fab fa-telegram text-gray-500 hover:text-red-500 cursor-pointer transition text-xl"></i>
+                        <i
+                            class="fab fa-instagram text-gray-500 hover:text-red-500 cursor-pointer transition text-xl"></i>
+                        <i class="fab fa-vk text-gray-500 hover:text-red-500 cursor-pointer transition text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Каталог</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="katalog.html" class="hover:text-white transition">Диваны</a></li>
+                        <li><a href="katalog.html" class="hover:text-white transition">Кресла</a></li>
+                        <li><a href="katalog.html" class="hover:text-white transition">Кровати</a></li>
+                        <li><a href="katalog.html" class="hover:text-white transition">Столы</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Информация</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="о-бренде.html" class="hover:text-white transition">О бренде</a></li>
+                        <li><a href="#" onclick="alert('Доставка по всей России')"
+                                class="hover:text-white transition">Доставка и оплата</a></li>
+                        <li><a href="#" onclick="alert('Гарантия 5 лет')"
+                                class="hover:text-white transition">Гарантия</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Контакты</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-phone w-4"></i> +7 (800) 555-35-35</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope w-4"></i> hello@lumber.ru</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-4"></i> г. Москва, ул.
+                            Дизайнеров, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">© 2024 Lumber. Все права
+                защищены. Курсовая работа.</div>
+        </div>
+    </footer>
+</body>
+<script>
+    // ========== КОРЗИНА И ИЗБРАННОЕ ==========
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+
+    if (typeof products === 'undefined') {
+        var products = [];
+    }
+
+    function updateCart() {
+        const count = cart.reduce((s, i) => s + i.qty, 0);
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        document.querySelectorAll('.cart-count, .cart-badge').forEach(el => {
+            el.textContent = count;
+            if (el.classList.contains('cart-badge')) {
+                el.style.display = count > 0 ? 'flex' : 'none';
+            }
+        });
+        document.querySelectorAll('.cart-total, #cart-total').forEach(el => {
+            el.textContent = total.toLocaleString() + ' ₽';
+        });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCartItems();
+    }
+
+    function renderCartItems() {
+        const container = document.getElementById('cart-items');
+        if (!container) return;
+        if (cart.length === 0) {
+            container.innerHTML = '<div class="text-center py-8 text-gray-400"><i class="fas fa-bag-shopping text-4xl mb-2"></i><p>Корзина пуста</p></div>';
+            return;
+        }
+        container.innerHTML = cart.map(i => `
+        <div class="flex justify-between items-center p-3 border-b">
+            <div>
+                <p class="font-medium">${i.name}</p>
+                <p class="text-sm text-gray-500">${i.price.toLocaleString()} ₽ × ${i.qty}</p>
+            </div>
+            <button onclick="removeFromCart(${i.id})" class="text-red-500 hover:text-red-700">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    `).join('');
+    }
+
+    function addToCart(id, qty = 1) {
+        let product = products.find(p => p.id === id);
+        if (!product) {
+            const names = { 1: 'Кресло LUNA', 2: 'Стол Марс', 5: 'Диван Атланта' };
+            const prices = { 1: 76990, 2: 85990, 5: 198990 };
+            product = {
+                id: id,
+                name: names[id] || 'Товар #' + id,
+                price: prices[id] || 0,
+                img: ''
+            };
+        }
+        const existing = cart.find(i => i.id === id);
+        if (existing) existing.qty += qty;
+        else cart.push({ ...product, qty });
+        updateCart();
+        showToast(product.name + ' добавлен в корзину 🛒');
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(i => i.id !== id);
+        updateCart();
+    }
+
+    function toggleCart() {
+        const dropdown = document.getElementById('cart-dropdown');
+        if (dropdown) {
+            dropdown.classList.toggle('hidden');
+            if (!dropdown.classList.contains('hidden')) renderCartItems();
+        }
+    }
+
+    function checkout() {
+        if (cart.length === 0) { alert('Корзина пуста!'); return; }
+        alert('✅ Спасибо за заказ! Наш менеджер свяжется с вами.');
+        cart = [];
+        updateCart();
+        document.getElementById('cart-dropdown')?.classList.add('hidden');
+    }
+
+    function toggleWishlist(id) {
+        const index = wishlist.indexOf(id);
+        if (index > -1) { wishlist.splice(index, 1); showToast('Удалено из избранного'); }
+        else { wishlist.push(id); showToast('Добавлено в избранное ❤️'); }
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        updateWishlist();
+    }
+
+    function updateWishlist() {
+        const count = wishlist.length;
+        document.querySelectorAll('.wishlist-count, .wish-badge').forEach(el => {
+            el.textContent = count;
+            if (el.classList.contains('wish-badge')) {
+                el.style.display = count > 0 ? 'flex' : 'none';
+            }
+        });
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            const id = parseInt(btn.dataset.id);
+            if (wishlist.includes(id)) {
+                btn.classList.add('text-red-500');
+                btn.classList.remove('text-gray-400');
+                btn.innerHTML = '<i class="fas fa-heart"></i>';
+            } else {
+                btn.classList.remove('text-red-500');
+                btn.classList.add('text-gray-400');
+                btn.innerHTML = '<i class="far fa-heart"></i>';
+            }
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-4 right-4 bg-gray-900 text-white px-6 py-3 rounded-xl shadow-lg z-50 transition-all duration-300';
+        toast.textContent = msg;
+        document.body.appendChild(toast);
+        setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(20px)'; setTimeout(() => toast.remove(), 300); }, 2500);
+    }
+
+    // Закрытие корзины при клике вне
+    document.addEventListener('click', function (e) {
+        const dropdown = document.getElementById('cart-dropdown');
+        const toggle = document.querySelector('.cart-toggle');
+        if (dropdown && !dropdown.classList.contains('hidden')) {
+            if (!dropdown.contains(e.target) && !toggle?.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCart();
+        updateWishlist();
+    });
+</script>
+
+</html>
