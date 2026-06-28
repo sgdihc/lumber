@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumber — Вход</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f5f5f5; }
+        .auth-card { backdrop-filter: blur(10px); background: rgba(255,255,255,0.95); }
+        .input-field:focus { border-color: #e53935; box-shadow: 0 0 0 3px rgba(229,57,53,0.1); }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);">
+
+    <div class="auth-card rounded-3xl shadow-2xl p-8 max-w-md w-full border border-gray-100">
+        <!-- Логотип -->
+        <div class="text-center mb-8">
+            <div class="text-3xl font-black">
+                <span class="text-gray-900">LUM</span><span class="text-red-500">BER</span>
+            </div>
+            <p class="text-gray-500 text-sm mt-2">Войдите в свой аккаунт</p>
+        </div>
+
+        <!-- Табы переключения -->
+        <div class="flex bg-gray-100 rounded-xl p-1 mb-6">
+            <button id="tab-login" onclick="switchTab('login')" class="flex-1 py-2.5 rounded-lg font-medium transition text-gray-700 bg-white shadow-sm">Вход</button>
+            <button id="tab-register" onclick="switchTab('register')" class="flex-1 py-2.5 rounded-lg font-medium transition text-gray-500 hover:text-gray-700">Регистрация</button>
+        </div>
+
+        <!-- Форма входа -->
+        <form id="login-form" onsubmit="login(event)" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                <input type="email" required placeholder="hello@lumber.ru" class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none transition">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Пароль</label>
+                <input type="password" required placeholder="••••••••" class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none transition">
+            </div>
+            <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center gap-2 text-gray-600"><input type="checkbox" class="rounded"> Запомнить</label>
+                <a href="#" class="text-red-500 hover:underline">Забыли пароль?</a>
+            </div>
+            <button type="submit" class="w-full bg-gray-900 hover:bg-red-500 text-white font-semibold py-3.5 rounded-xl transition text-lg">Войти</button>
+            <p class="text-center text-gray-500 text-sm mt-4">Нет аккаунта? <a href="#" onclick="switchTab('register');return false;" class="text-red-500 font-medium hover:underline">Зарегистрироваться</a></p>
+        </form>
+
+        <!-- Форма регистрации (скрыта) -->
+        <form id="register-form" onsubmit="register(event)" class="space-y-4 hidden">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Имя</label>
+                <input type="text" required placeholder="Иван Иванов" class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none transition">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                <input type="email" required placeholder="hello@lumber.ru" class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none transition">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Пароль</label>
+                <input type="password" required minlength="6" placeholder="••••••••" class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none transition">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Подтверждение пароля</label>
+                <input type="password" required minlength="6" placeholder="••••••••" class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none transition">
+            </div>
+            <button type="submit" class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3.5 rounded-xl transition text-lg">Создать аккаунт</button>
+            <p class="text-center text-gray-500 text-sm mt-4">Уже есть аккаунт? <a href="#" onclick="switchTab('login');return false;" class="text-red-500 font-medium hover:underline">Войти</a></p>
+        </form>
+
+        <!-- Социальный вход -->
+        <div class="mt-6 pt-6 border-t border-gray-200">
+            <p class="text-center text-gray-400 text-sm mb-4">Или войдите через</p>
+            <div class="flex gap-3">
+                <button onclick="alert('Вход через Google')" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
+                    <i class="fab fa-google text-red-500 text-lg"></i> Google
+                </button>
+                <button onclick="alert('Вход через VK')" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
+                    <i class="fab fa-vk text-blue-600 text-lg"></i> VK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const loginTab = document.getElementById('tab-login');
+            const registerTab = document.getElementById('tab-register');
+            
+            if (tab === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                loginTab.className = 'flex-1 py-2.5 rounded-lg font-medium transition text-gray-700 bg-white shadow-sm';
+                registerTab.className = 'flex-1 py-2.5 rounded-lg font-medium transition text-gray-500 hover:text-gray-700';
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                registerTab.className = 'flex-1 py-2.5 rounded-lg font-medium transition text-gray-700 bg-white shadow-sm';
+                loginTab.className = 'flex-1 py-2.5 rounded-lg font-medium transition text-gray-500 hover:text-gray-700';
+            }
+        }
+
+        function login(e) {
+            e.preventDefault();
+            alert('✅ Добро пожаловать! Вы успешно вошли в аккаунт.');
+            window.location.href = 'home.html';
+        }
+
+        function register(e) {
+            e.preventDefault();
+            alert('✅ Регистрация успешна! Проверьте вашу почту для подтверждения.');
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>
